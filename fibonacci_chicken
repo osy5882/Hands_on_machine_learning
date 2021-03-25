@@ -1,0 +1,34 @@
+class ChickenCalc:
+  @classmethod
+  def how_many(cls, num):
+      fibo = [0,1]
+      i = 2
+      value = 0
+      while True:
+        value = fibo[i-1] + fibo[i-2]
+        if value <= num:
+          fibo.append(value)
+        else:
+          break
+        i += 1
+
+      if num == 1:
+        return 1
+      elif num in fibo:
+        idx = fibo.index(num)
+        return fibo[idx-1]
+      else: 
+        a = 0
+        while True:
+          a += 1
+          n = num - a
+          if n in fibo:
+            break
+        k = num - n 
+        if k == 1:
+          idx1 = fibo.index(n)
+          return fibo[idx1-1] + 1
+        else:
+          idx1 = fibo.index(n)
+          idx2 = fibo.index(k)
+          return fibo[idx1-1]+fibo[idx2-1]
